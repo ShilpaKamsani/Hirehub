@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit your job postings here</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='homestyle.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="{{ url_for('submit') }}" class="button">For Employers</a></li>
+            <li><a href="{{ url_for('search') }}" class="button">For Job seekers</a></li>
+            <li><a href="{{ url_for('aboutus') }}">About Us</a></li>
+            <li><a href="{{ url_for('contactus') }}">Contact Us</a></li>
+          </ul>
+        </nav>
+        </header>
+    <h1>Submit your job postings here</h1><br><br>
+    <h2>Hey Employers! Please submit your job postings here with all the relevant details.</h2><br><br>
+    <form action="/submit" method="POST">
+        <label for="id">Job Id</label>
+        <input type="number" name="id" required><br>
+
+        <label for="job_title">job_title</label>
+        <input type="text" name="job_title" id="job_title" required><br>
+
+        <label for="job_description">job_description</label>
+        <input type="text" name="job_description" id="job_description" required><br>
+
+        <label for="company_name">company_name</label>
+        <input type="text" name="company_name" id="company_name" required ><br>
+
+        <label for="salary">salary</label>
+        <input type="number" name="salary" id="salary" required><br>
+
+        <label for="location">location</label>
+        <input type="text" name="location" id="location" required><br>
+
+        <label for="expiration_date">expiration_date</label>
+        <input type="date" name="expiration_date" id="expiration_date" required><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+    
+</body>
+</html>

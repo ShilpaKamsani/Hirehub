@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search Results</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='homestyle.css') }}">
+</head>
+<body>
+	<header>
+		<nav>
+		  <ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="{{ url_for('submit') }}" class="button">For Employers</a></li>
+			<li><a href="{{ url_for('search') }}" class="button">For Job seekers</a></li>
+			<li><a href="{{ url_for('aboutus') }}">About Us</a></li>
+			<li><a href="{{ url_for('contactus') }}">Contact Us</a></li>
+		  </ul>
+		</nav>
+		</header>
+	<h1>Search Results</h1>
+	<p>Number of results found: {{ num_results }}</p>
+	<table>
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>job_title</th>
+				<th>job_description</th>
+				<th>company_name</th>
+                <th>location</th>
+				<th>salary</th>
+				<th>expiration_date</th>
+				<th>apply</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			{% for result in results %}
+			<tr>
+				<td>{{ result[0] }}</td>
+				<td>{{ result[1] }}</td>
+				<td>{{ result[2] }}</td>
+				<td>{{ result[3] }}</td>
+                <td>{{ result[4] }}</td>
+				<td>{{ result[5] }}</td>
+				<td>{{ result[6] }}</td>
+				<td><a href="/apply?id={{ result[0] }}&job_title={{ result[1] }}&job_description={{ result[2] }}&company_name={{ result[3] }}&location={{ result[4] }}&salary={{ result[5] }}&expiration_date={{ result[6] }}">Apply</a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</body>

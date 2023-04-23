@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>My Home Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='homestyle.css') }}">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="{{ url_for('submit') }}" class="button">For Employers</a></li>
+          <li><a href="{{ url_for('search') }}" class="button">For Job seekers</a></li>
+          <li><a href="{{ url_for('aboutus') }}">About Us</a></li>
+          <li><a href="{{ url_for('contactus') }}">Contact Us</a></li>
+        </ul>
+      </nav>
+      <div class="hero">
+        <h1>Find Your Dream Job</h1>
+        <p>Explore thousands of job listings from top companies.</p>
+      </div>
+    </header>
+    <section class="featured-jobs">
+      <h2>Featured Jobs</h2>
+      <ul>
+        <li>
+            <h3>Software Engineer</h3>
+        </li>
+        <li>
+            <h3>Data Analyst</h3>
+        </li>
+        <li>
+            <h3>Marketing Manager</h3>
+        </li>
+      </ul>
+      <a href="{{ url_for('search') }}" class="btn">View All Jobs</a>
+    </section>
+    
+    <section class="how-it-works">
+      <h2>How It Works</h2>
+      <ul>
+        <li>
+          <h3>It helps you post a job</h3>
+        </li>
+        <li>
+          <h3>It helps you with seaching a job</h3>
+        </li>
+        <li>
+          <h3>It helps you with applying the job</h3>
+        </li>
+      </ul>
+    </section>
+    
+    <footer>
+      <p>&copy; 2023 Hirehub. All rights reserved.</p>
+      <nav>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </nav>
+    </footer>
+  </body>
+ 
+</html>

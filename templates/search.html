@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search job postings</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='homestyle.css') }}">
+</head>
+<body>
+  
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="{{ url_for('submit') }}" class="button">For Employers</a></li>
+        <li><a href="{{ url_for('search') }}" class="button">For Job seekers</a></li>
+        <li><a href="{{ url_for('aboutus') }}">About Us</a></li>
+        <li><a href="{{ url_for('contactus') }}">Contact Us</a></li>
+      </ul>
+    </nav>
+    </header>
+    <h2 id="ser">Hey! Job seekers please apply for the job postings.</h2><br><br>
+  <form method="post">
+ 
+    <h3><label for="search_query">SEARCH WITH JOB TITLE</label><br></h3>
+    <input type="text" id="search_query" name="search_query" required>
+    <br>
+    <button type="submit">Search</button>
+  </form>
+</body>
+</html>

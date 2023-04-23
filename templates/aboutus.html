@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>About Us - Job Board</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Aboutusstyle.css') }}">
+</head>
+<body>
+	<header>
+		<nav>
+			<ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="{{ url_for('submit') }}" class="button">For Employers</a></li>
+                <li><a href="{{ url_for('search') }}" class="button">For Job seekers</a></li>
+                <li><a href="{{ url_for('aboutus') }}">About Us</a></li>
+                <li><a href="{{ url_for('contactus') }}">Contact Us</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section class="about-us">
+			<h1>About Us</h1>
+			<p>Hirehub is a leading job portal that connects employers with job seekers. We aim to provide the best job search experience for both employers and job seekers alike. Our website features a wide range of job listings from various industries, and we strive to help job seekers find the perfect job for their skills and qualifications.</p>
+			<p>At Hirehub, we believe in providing a platform where employers and job seekers can connect and communicate effectively. Our mission is to bridge the gap between job seekers and employers, and to help both parties achieve their goals.</p>
+			<p>We are a team of dedicated professionals who are passionate about helping people find the right job. Our team consists of experienced recruiters, HR professionals, and web developers who work together to provide the best job search experience for our users.</p>
+		</section>
+	</main>
+	<footer>
+		<p>&copy; 2023 Hirehub. All rights reserved.</p>
+	</footer>
+</body>
+</html>

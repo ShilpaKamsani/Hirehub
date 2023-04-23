@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Success</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='homestyle.css') }}">
+</head>
+<body>
+	<header>
+		<nav>
+		  <ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="{{ url_for('submit') }}" class="button">For Employers</a></li>
+			<li><a href="{{ url_for('search') }}" class="button">For Job seekers</a></li>
+			<li><a href="{{ url_for('aboutus') }}">About Us</a></li>
+			<li><a href="{{ url_for('contactus') }}">Contact Us</a></li>
+		  </ul>
+		</nav>
+		</header><br><br>
+		<h2>Job applied successfully, email notification sent to below email id</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th> 
+				<th>Age</th> 
+				<th>City</th>  
+				<th>Date</th> 
+				<th>Email</th> 
+			</tr>
+		</thead>
+			<tbody>
+				<tr>
+					<td>{{ name }}</td>
+					<td>{{ age }}</td>
+					<td>{{ city }}</td>
+					<td>{{ date }}</td>
+					<td>{{ email }}</td>
+				</tr>
+			</tbody>
+	</table>
+	
+</body>
+</html>

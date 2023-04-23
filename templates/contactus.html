@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contact Us</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='contactus.css') }}">
+</head>
+<body>
+	<header>
+		<nav>
+			<ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="{{ url_for('submit') }}" class="button">For Employers</a></li>
+                <li><a href="{{ url_for('search') }}" class="button">For Job seekers</a></li>
+                <li><a href="{{ url_for('aboutus') }}">About Us</a></li>
+                <li><a href="{{ url_for('contactus') }}">Contact Us</a></li>
+			</ul>
+		</nav>
+	</header>
+
+
+		<section class="contact-info">
+			<h2>Contact Information</h2>
+			
+				<p><strong>Email:</strong> info@hirehub.com</p>
+				<p><strong>Phone:</strong> +1 123-456-7890</p>
+				<p><strong>Address:</strong> 123 Main Street, Anytown, USA</p>
+			
+		</section>
+	</main>
+
+	<footer>
+		<p>&copy; 2023 Hirehub</p>
+	</footer>
+</body>
+</html>
