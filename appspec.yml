@@ -4,18 +4,8 @@ files:
   - source: /
     destination: /home/ec2-user/Finaltest1
 hooks:
-  '''BeforeInstall:
-    - location: scripts/install_dependencies
-      timeout: 300
-      runas: root
-    - location: scripts/start_server
-      timeout: 300
-      runas: root'''
   AfterInstall:
     - location: scripts/start_server.sh
       timeout: 300
       runas: ec2-user
-  '''ApplicationStop:
-    - location: scripts/stop_server
-      timeout: 300
-      runas: root'''
+
