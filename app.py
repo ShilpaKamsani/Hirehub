@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 import mysql.connector
 import boto3
-from config import config
+import config
 s3 = boto3.client('s3')
 response = s3.list_buckets()
 app = Flask(__name__)
