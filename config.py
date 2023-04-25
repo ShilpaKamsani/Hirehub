@@ -1,0 +1,5 @@
+RDS_HOSTNAME = 'database-1.camgghypqjhh.us-east-1.rds.amazonaws.com'
+RDS_PORT = '3306'
+RDS_DB_NAME = 'hirehubdb'
+RDS_USERNAME = 'admin'
+RDS_PASSWORD = 'admin123'
