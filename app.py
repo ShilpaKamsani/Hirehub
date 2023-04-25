@@ -10,16 +10,9 @@ topic_arn = 'arn:aws:sns:us-east-1:269269334576:hirehubtopic'
 #response = sns_client.list_subscriptions_by_topic(TopicArn=topic_arn)
 
 # connect to the MySQL database
-'''mydb = mysql.connector.connect(
-    host = 'database-1.camgghypqjhh.us-east-1.rds.amazonaws.com',
-    port = 3306,
-    user="admin",
-    password="admin123",
-    database="hirehubdb"
-)'''
 
 mydb = mysql.connector.connect(
-    RDS_HOSTNAME=config.RDS_HOSTNAME,
+    host=config.RDS_HOSTNAME,
     user=config.RDS_USERNAME,
     password=config.RDS_PASSWORD,
     database=config.RDS_DB_NAME
