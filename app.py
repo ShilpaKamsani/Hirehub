@@ -107,35 +107,16 @@ def apply():
         cur.execute("INSERT INTO jobs (id, name, age, city, date, email) VALUES (%s, %s, %s, %s, %s, %s)", (id, name, age, city, date, email))
         mydb.commit()  
         cur.close()
-       
-        # Check if the applicant is already subscribed
+#subscription_response = None
         already_subscribed = False
-        target_arn = None
         subscription_response = sns_client.list_subscriptions_by_topic(TopicArn=topic_arn)
         for subscription in subscription_response['Subscriptions']:
             if subscription['Protocol'] == 'email' and subscription['Endpoint'] == email:
                 target_arn = subscription['SubscriptionArn']
                 already_subscribed = True
                 break
-       
-        if already_subscribed:
-            # If the applicant is already subscribed, publish a message to the topic
-            message = f'Job application submitted for job ID {id} by {name} on {date}'
-            response = sns_client.publish(
-                TopicArn=topic_arn,
-                Message=message,
-                Subject='New Job Application',
-                MessageAttributes={
-                    'email': {
-                        'DataType': 'String',
-                        'StringValue': email
-                    }
-                }
-            )
-            message_id = response['MessageId']
-            return redirect(url_for('successjobsubmit', id=id, name=name, age=age, city=city, date=date, email=email))
-        else:
-            # If the applicant is not already subscribed, subscribe them to the topic and send two messages
+        # If the applicant is not already subscribed, subscribe them to the topic
+        if not already_subscribed:
             response1 = sns_client.subscribe(
                 TopicArn=topic_arn,
                 Protocol='email',
@@ -143,36 +124,13 @@ def apply():
                 ReturnSubscriptionArn=True
             )
             target_arn = response1['SubscriptionArn']
-            # Publish a message to the topic about subscription confirmation
-            message1 = 'Thank you for subscribing to job application updates.'
-            response2 = sns_client.publish(
-                TopicArn=topic_arn,
-                Message=message1,
-                Subject='Subscription Confirmation',
-                MessageAttributes={
-                    'email': {
-                        'DataType': 'String',
-                        'StringValue': email
-                    }
-                }
-            )
-            message1_id = response2['MessageId']
-            # Publish a message to the topic about the job application
-            message2 = f'Job application submitted for job ID {id} by {name} on {date}'
-            response3 = sns_client.publish(
-                TopicArn=topic_arn,
-                Message=message2,
-                Subject='New Job Application',
-                MessageAttributes={
-                    'email': {
-                        'DataType': 'String',
-                        'StringValue': email
-                    }
-                }
-            )
-            message2_id = response3['MessageId']
-            return redirect(url_for('successjobsubmit', id=id, name=name, age=age, city=city, date=date, email=email))
-           
+        # Publish a message to the topic
+        message = f'Job application submitted for job ID {id} by {name} on {date}'
+        sns_client.publish(TopicArn=topic_arn, Message=message, Subject='New Job Application')
+        
+        return redirect(url_for('successjobsubmit', id=id, name=name, age=age, city=city, date=date, email=email))
+        
+        
     else:
         id = request.args.get('id')
         name = request.args.get('name')
@@ -181,7 +139,7 @@ def apply():
         date = request.args.get('date')
         # If the request method is GET, show the form
         return render_template('apply.html',id=id)
-
+    
 @app.route('/successjobsubmit/<id>/<name>/<age>/<city>/<date>/<email>')
 def successjobsubmit(id, name, age, city, date, email):
         return render_template('successjobsubmit.html', id=id, name=name, age=age, city=city, date=date, email=email)
