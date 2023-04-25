@@ -146,4 +146,4 @@ def successjobsubmit(id, name, age, city, date, email):
         return render_template('successjobsubmit.html', id=id, name=name, age=age, city=city, date=date, email=email)
 
 if __name__ == '__main__':
-        app.run(debug=True,host='0.0.0.0',port=6000)
+        app.run(debug=True,host='0.0.0.0',port=5000)
