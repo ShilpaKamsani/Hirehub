@@ -1,1 +1,1 @@
-COMMIT
+select * FROM job_postings
