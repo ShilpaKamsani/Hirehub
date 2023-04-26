@@ -1,1 +1,1 @@
-select * FROM job_postings
+select * from job_postings
